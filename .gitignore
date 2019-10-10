@@ -4,4 +4,9 @@ obj
 appsettings.json
 appsettings.Development.json
 *.db
-node_modules/
+
+/node_modules
+/.pnp
+.pnp.js
+
+/build
