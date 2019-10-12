@@ -1,5 +1,9 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using MediatR;
+using Persistence;
+using Domain;
 
 namespace Application.Activities
 {
@@ -20,6 +24,30 @@ namespace Application.Activities
             public string City { get; set; }
 
             public string Venue { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Command>
+        {
+            private readonly DataContext _context;
+
+            public Handler(DataContext context)
+            {
+                _context = context;
+            }
+
+            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            {
+                var activity = new Activity
+                {
+                    Id = request.Id,
+                    Title = request.Title,
+                    Description = request.Description,
+                    Category = request.Category,
+                    Date = request.Date,
+                    City = request.City,
+                    Venue = request.Venue
+                }
+            }
         }
     }
 }
