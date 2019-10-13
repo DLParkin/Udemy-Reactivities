@@ -24,7 +24,7 @@ const ActivityList: React.FC<IProps> = ({ activities }) => {
               <Item.Extra>
                 <Button floated="right" content="view" color="blue" />
               </Item.Extra>
-              <Label basic content="Category" />
+              <Label basic content={activity.category} />
             </Item.Content>
           </Item>
         ))}
