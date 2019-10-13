@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Header, Icon, List } from 'semantic-ui-react';
+import { IActivity } from '../models/activity';
 
-class App extends Component {
+interface IState {
+  activities: IActivity[]
+}
+
+class App extends Component<{}, IState> {
   state = {
     activities: []
   };
