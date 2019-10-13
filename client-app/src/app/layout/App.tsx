@@ -8,7 +8,7 @@ interface IState {
 }
 
 class App extends Component<{}, IState> {
-  state = {
+  readonly state: IState = {
     activities: []
   };
 
