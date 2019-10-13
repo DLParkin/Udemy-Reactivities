@@ -24,7 +24,7 @@ class App extends Component {
         </Header>
         <List>
           {this.state.activities.map((activity: any) => (
-            <List.Item key={activity.id}>{activity.name}</List.Item>
+            <List.Item key={activity.id}>{activity.title}</List.Item>
           ))}
         </List>
       </div>
