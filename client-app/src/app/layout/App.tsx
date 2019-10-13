@@ -9,11 +9,11 @@ interface IState {
 
 class App extends Component<{}, IState> {
   readonly state: IState = {
-    activities: []
+    activities: [],
   };
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/activities').then(response => {
+    axios.get<IActivity[]>('http://localhost:5000/api/activities').then(response => {
       this.setState({
         activities: response.data
       });
