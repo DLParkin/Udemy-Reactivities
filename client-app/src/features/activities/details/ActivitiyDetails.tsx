@@ -1,27 +1,29 @@
-import React from 'react'
-import { Card, Image, Icon } from 'semantic-ui-react'
+import React from 'react';
+import { Card, Image, Icon, Button } from 'semantic-ui-react';
 
 const ActivitiyDetails = () => {
   return (
-    <Card>
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>Matthew</Card.Header>
-      <Card.Meta>
-        <span className='date'>Joined in 2015</span>
-      </Card.Meta>
-      <Card.Description>
-        Matthew is a musician living in Nashville.
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
-    </Card.Content>
-  </Card>
-  )
-}
+    <Card fluid>
+      <Image
+        src="/assets/placeholder.png"
+        wrapped
+        ui={false}
+      />
+      <Card.Content>
+        <Card.Header>Title</Card.Header>
+        <Card.Meta>
+          <span>Date</span>
+        </Card.Meta>
+        <Card.Description>Description</Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <Button.Group widths={2}>
+          <Button basic color="blue" content="Edit"/>
+          <Button basic color="grey" content="Cancel"/>
+        </Button.Group>
+      </Card.Content>
+    </Card>
+  );
+};
 
-export default ActivitiyDetails
+export default ActivitiyDetails;
