@@ -4,11 +4,7 @@ import { Card, Image, Icon, Button } from 'semantic-ui-react';
 const ActivitiyDetails = () => {
   return (
     <Card fluid>
-      <Image
-        src="/assets/placeholder.png"
-        wrapped
-        ui={false}
-      />
+      <Image src="/assets/placeholder.png" wrapped ui={false} />
       <Card.Content>
         <Card.Header>Title</Card.Header>
         <Card.Meta>
@@ -18,8 +14,8 @@ const ActivitiyDetails = () => {
       </Card.Content>
       <Card.Content extra>
         <Button.Group widths={2}>
-          <Button basic color="blue" content="Edit"/>
-          <Button basic color="grey" content="Cancel"/>
+          <Button basic color="blue" content="Edit" />
+          <Button basic color="grey" content="Cancel" />
         </Button.Group>
       </Card.Content>
     </Card>
