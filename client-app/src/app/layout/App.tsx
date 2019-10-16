@@ -17,7 +17,7 @@ const App = () => {
   const handleOpenCreateForm = () => {
     setSelectedActivity(null);
     setEditMode(true);
-  };
+  }
 
   useEffect(() => {
     axios.get<IActivity[]>('http://localhost:5000/api/activities').then(response => {
