@@ -11,8 +11,8 @@ const ActivityForm = () => {
         <Form.Input type="date" placeholder="Date" />
         <Form.Input placeholder="City" />
         <Form.Input placeholder="Venue" />
-        <Button floated="right" positive type="submit" content="Submit"/>
-        <Button floated="right" type="button" content="Cancel"/>
+        <Button floated="right" positive type="submit" content="Submit" />
+        <Button floated="right" type="button" content="Cancel" />
       </Form>
     </Segment>
   );
