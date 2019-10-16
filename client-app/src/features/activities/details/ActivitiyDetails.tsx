@@ -5,9 +5,10 @@ import { IActivity } from '../../../app/models/activity';
 interface IProps {
   activity: IActivity;
   setEditMode: (editMode: boolean) => void;
+  setSelectedActivity: (activity: IActivity | null) => void;
 }
 
-const ActivitiyDetails: React.FC<IProps> = ({ activity, setEditMode }) => {
+const ActivitiyDetails: React.FC<IProps> = ({ activity, setEditMode, setSelectedActivity }) => {
   return (
     <Fragment>
       {activity && (
@@ -23,7 +24,12 @@ const ActivitiyDetails: React.FC<IProps> = ({ activity, setEditMode }) => {
           <Card.Content extra>
             <Button.Group widths={2}>
               <Button onClick={() => setEditMode(true)} basic color="blue" content="Edit" />
-              <Button basic color="grey" content="Cancel" />
+              <Button
+                onClick={() => setSelectedActivity(null)}
+                basic
+                color="grey"
+                content="Cancel"
+              />
             </Button.Group>
           </Card.Content>
         </Card>
