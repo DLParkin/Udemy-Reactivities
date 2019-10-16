@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Form } from 'semantic-ui-react';
+import { Segment, Form, Button } from 'semantic-ui-react';
 
 const ActivityForm = () => {
   return (
@@ -11,6 +11,8 @@ const ActivityForm = () => {
         <Form.Input type="date" placeholder="Date" />
         <Form.Input placeholder="City" />
         <Form.Input placeholder="Venue" />
+        <Button floated="right" positive type="submit" content="Submit"/>
+        <Button floated="right" type="button" content="Cancel"/>
       </Form>
     </Segment>
   );
