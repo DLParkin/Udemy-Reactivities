@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
 import { IActivity } from '../../../app/models/activity';
 
@@ -7,22 +7,24 @@ interface IProps {
   activity: IActivity;
 }
 
-const ActivityForm: React.FC<IProps> = ({ setEditMode, activity }) => {
-
+const ActivityForm: React.FC<IProps> = ({ setEditMode, activity: initialFormState }) => {
   const initializeForm = () => {
-    if(activity) {
-      return activity
+    if (initialFormState) {
+      return initialFormState;
     } else {
       return {
+        id: '',
         title: '',
         category: '',
         description: '',
         date: '',
         city: '',
         venue: ''
-      }
+      };
     }
-  }
+  };
+
+  const [activity, setActivity] = useState<IActivity>(initializeForm);
 
   return (
     <Segment clearing>
