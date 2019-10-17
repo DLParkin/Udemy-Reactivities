@@ -26,6 +26,8 @@ const ActivityForm: React.FC<IProps> = ({ setEditMode, activity: initialFormStat
 
   const [activity, setActivity] = useState<IActivity>(initializeForm);
 
+  const handleSubmit = () => {};
+
   const handleInputChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setActivity({ ...activity, [name]: value });
@@ -33,42 +35,42 @@ const ActivityForm: React.FC<IProps> = ({ setEditMode, activity: initialFormStat
 
   return (
     <Segment clearing>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Input
           onChange={handleInputChange}
-          name='title'
+          name="title"
           placeholder="Title"
           value={activity.title}
         />
         <Form.TextArea
           onChange={handleInputChange}
-          name='description'
+          name="description"
           rows={2}
           placeholder="Description"
           value={activity.description}
         />
         <Form.Input
           onChange={handleInputChange}
-          name='category'
+          name="category"
           placeholder="Category"
           value={activity.category}
         />
         <Form.Input
           onChange={handleInputChange}
-          name='date'
+          name="date"
           type="date"
           placeholder="Date"
           value={activity.date}
         />
         <Form.Input
           onChange={handleInputChange}
-          name='city'
+          name="city"
           placeholder="City"
           value={activity.city}
         />
         <Form.Input
           onChange={handleInputChange}
-          name='venue'
+          name="venue"
           placeholder="Venue"
           value={activity.venue}
         />
