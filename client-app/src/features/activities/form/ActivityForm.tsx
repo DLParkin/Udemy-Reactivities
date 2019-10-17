@@ -1,11 +1,13 @@
 import React from 'react';
 import { Segment, Form, Button } from 'semantic-ui-react';
+import { IActivity } from '../../../app/models/activity';
 
 interface IProps {
   setEditMode: (editMode: boolean) => void;
+  activity: IActivity;
 }
 
-const ActivityForm: React.FC<IProps> = ({ setEditMode }) => {
+const ActivityForm: React.FC<IProps> = ({ setEditMode, activity }) => {
   return (
     <Segment clearing>
       <Form>
