@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import axios from 'axios';
 import { Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
 import NavBar from '../../features/nav/NavBar';
@@ -40,7 +39,7 @@ const App = () => {
   useEffect(() => {
     agent.Activities.list().then(response => {
       let activities: IActivity[] = [];
-      response.forEach((activity) => {
+      response.forEach(activity => {
         activity.date = activity.date.split('.')[0];
         activities.push(activity);
       });
