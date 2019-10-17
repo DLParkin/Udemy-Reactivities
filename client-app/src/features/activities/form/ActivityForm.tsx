@@ -8,6 +8,22 @@ interface IProps {
 }
 
 const ActivityForm: React.FC<IProps> = ({ setEditMode, activity }) => {
+
+  const initializeForm = () => {
+    if(activity) {
+      return activity
+    } else {
+      return {
+        title: '',
+        category: '',
+        description: '',
+        date: '',
+        city: '',
+        venue: ''
+      }
+    }
+  }
+
   return (
     <Segment clearing>
       <Form>
