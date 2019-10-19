@@ -4,6 +4,7 @@ import { IActivity } from '../models/activity';
 import NavBar from '../../features/nav/NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import agent from '../api/agent';
+import LoadingComponent from './LoadingComponent';
 
 const App = () => {
   const [activities, setActivities] = useState<IActivity[]>([]);
@@ -51,8 +52,10 @@ const App = () => {
         activities.push(activity);
       });
       setActivities(activities);
-    });
+    }).then(() => setLoading(false));
   }, []);
+
+  if (loading) return <LoadingComponent content='Loading activities...'/>
 
   return (
     <Fragment>
