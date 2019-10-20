@@ -1,17 +1,11 @@
 import React, { Fragment, useContext } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
-import { IActivity } from '../../../app/models/activity';
 import ActivityStore from '../../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
 
-interface IProps {
-  setEditMode: (editMode: boolean) => void;
-  setSelectedActivity: (activity: IActivity | null) => void;
-}
-
-const ActivitiyDetails: React.FC<IProps> = ({ setEditMode, setSelectedActivity }) => {
+const ActivitiyDetails: React.FC = () => {
   const activityStore = useContext(ActivityStore);
-  const { selectedActivity: activity, openEditForm } = activityStore;
+  const { selectedActivity: activity, openEditForm, cancelSelectedActivity } = activityStore;
 
   return (
     <Fragment>
@@ -34,7 +28,7 @@ const ActivitiyDetails: React.FC<IProps> = ({ setEditMode, setSelectedActivity }
                 content="Edit"
               />
               <Button
-                onClick={() => setSelectedActivity(null)}
+                onClick={() => cancelSelectedActivity}
                 basic
                 color="grey"
                 content="Cancel"

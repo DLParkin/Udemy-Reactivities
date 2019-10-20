@@ -69,6 +69,14 @@ class ActivityStore {
     this.editMode = true;
   };
 
+  @action cancelSelectedActivity = () => {
+    this.selectedActivity = undefined;
+  }
+
+  @action cancelFormOpen = () => {
+    this.editMode = false;
+  }
+
   @action selectActivity = (id: string) => {
     this.selectedActivity = this.activityRegistry.get(id);
     this.editMode = false;

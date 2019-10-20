@@ -11,7 +11,6 @@ import { observer } from 'mobx-react-lite';
 const App = () => {
   const activityStore = useContext(ActivityStore);
   const [activities, setActivities] = useState<IActivity[]>([]);
-  const [selectedActivity, setSelectedActivity] = useState<IActivity | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [target, setTarget] = useState('');
@@ -38,7 +37,6 @@ const App = () => {
       <Container style={{ marginTop: '7em' }}>
         <ActivityDashboard
           setEditMode={setEditMode}
-          setSelectedActivity={setSelectedActivity}
           deleteActivity={handleDeleteActivity}
           submitting={submitting}
           target={target}
