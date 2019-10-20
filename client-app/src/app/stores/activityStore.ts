@@ -2,12 +2,14 @@ import { observable, action } from 'mobx';
 import { createContext } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
+import { async } from 'q';
 
 class ActivityStore {
   @observable activities: IActivity[] = [];
   @observable selectedActivity: IActivity | undefined;
   @observable loadingInitial = false;
   @observable editMode = false;
+  @observable submitting = false;
 
   @action loadActivities = async () => {
     this.loadingInitial = true;
@@ -21,6 +23,19 @@ class ActivityStore {
     } catch (error) {
       console.error();
       this.loadingInitial = false;
+    }
+  };
+
+  @action createActivity = async (activity: IActivity) => {
+    this.submitting = true;
+    try {
+      await agent.Activities.create(activity);
+      this.activities.push(activity);
+      this.editMode = false;
+      this.submitting = false;
+    } catch (error) {
+      console.log(error);
+      this.submitting = false;
     }
   };
 
