@@ -57,4 +57,4 @@ const ActivityList: React.FC<IProps> = ({
   );
 };
 
-export default observer (ActivityList);
+export default observer(ActivityList);
