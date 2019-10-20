@@ -45,6 +45,20 @@ class ActivityStore {
     }
   };
 
+  @action editActivity = async (activity: IActivity) => {
+    this.submitting = true;
+    try {
+      await agent.Activities.update(activity);
+      this.activityRegistry.set(activity.id, activity);
+      this.selectedActivity = activity;
+      this.editMode = false;
+      this.submitting = false;
+    } catch (error) {
+      console.log(error);
+      this.submitting = false;
+    }
+  }
+  
   @action openCreateForm = () => {
     this.editMode = true;
     this.selectedActivity = undefined;
