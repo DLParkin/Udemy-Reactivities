@@ -69,7 +69,6 @@ const App = () => {
     <Fragment>
       <NavBar openCreateForm={handleOpenCreateForm} />
       <Container style={{ marginTop: '7em' }}>
-        <h1>{activityStore.title}</h1>
         <ActivityDashboard
           activities={activities}
           selectActivity={handleSelectActivity}
