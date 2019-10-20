@@ -1,25 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import { IActivity } from '../../../app/models/activity';
+import ActivityStore from '../../../app/stores/activityStore';
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
-  activity: IActivity;
   setEditMode: (editMode: boolean) => void;
   setSelectedActivity: (activity: IActivity | null) => void;
 }
 
-const ActivitiyDetails: React.FC<IProps> = ({ activity, setEditMode, setSelectedActivity }) => {
+const ActivitiyDetails: React.FC<IProps> = ({ setEditMode, setSelectedActivity }) => {
+  const activityStore = useContext(ActivityStore);
+  const { selectedActivity: activity} = activityStore;
+
   return (
     <Fragment>
       {activity && (
         <Card fluid>
-          <Image src={`/assets/categoryImages/${activity.category}.jpg`} wrapped ui={false} />
+          <Image src={`/assets/categoryImages/${activity!.category}.jpg`} wrapped ui={false} />
           <Card.Content>
-            <Card.Header>{activity.title}</Card.Header>
+            <Card.Header>{activity!.title}</Card.Header>
             <Card.Meta>
-              <span>{activity.date}</span>
+              <span>{activity!.date}</span>
             </Card.Meta>
-            <Card.Description>{activity.description}</Card.Description>
+            <Card.Description>{activity!.description}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <Button.Group widths={2}>
@@ -38,4 +42,4 @@ const ActivitiyDetails: React.FC<IProps> = ({ activity, setEditMode, setSelected
   );
 };
 
-export default ActivitiyDetails;
+export default observer(ActivitiyDetails);
