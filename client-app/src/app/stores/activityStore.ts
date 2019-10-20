@@ -57,11 +57,16 @@ class ActivityStore {
       console.log(error);
       this.submitting = false;
     }
-  }
-  
+  };
+
   @action openCreateForm = () => {
     this.editMode = true;
     this.selectedActivity = undefined;
+  };
+
+  @action openEditForm = (id: string) => {
+    this.selectedActivity = this.activityRegistry.get(id);
+    this.editMode = true;
   };
 
   @action selectActivity = (id: string) => {

@@ -11,7 +11,7 @@ interface IProps {
 
 const ActivitiyDetails: React.FC<IProps> = ({ setEditMode, setSelectedActivity }) => {
   const activityStore = useContext(ActivityStore);
-  const { selectedActivity: activity} = activityStore;
+  const { selectedActivity: activity, openEditForm } = activityStore;
 
   return (
     <Fragment>
@@ -27,7 +27,12 @@ const ActivitiyDetails: React.FC<IProps> = ({ setEditMode, setSelectedActivity }
           </Card.Content>
           <Card.Content extra>
             <Button.Group widths={2}>
-              <Button onClick={() => setEditMode(true)} basic color="blue" content="Edit" />
+              <Button
+                onClick={() => openEditForm(activity!.id)}
+                basic
+                color="blue"
+                content="Edit"
+              />
               <Button
                 onClick={() => setSelectedActivity(null)}
                 basic
