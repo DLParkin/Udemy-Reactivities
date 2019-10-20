@@ -10,7 +10,6 @@ import ActivityStore from '../../../app/stores/activityStore';
 interface IProps {
   setEditMode: (editMode: boolean) => void;
   setSelectedActivity: (activity: IActivity | null) => void;
-  editActivity: (activity: IActivity) => void;
   deleteActivity: (e: SyntheticEvent<HTMLButtonElement>, id: string) => void;
   submitting: boolean;
   target: string;
@@ -19,7 +18,6 @@ interface IProps {
 const ActivityDashboard: React.FC<IProps> = ({
   setEditMode,
   setSelectedActivity,
-  editActivity,
   deleteActivity,
   submitting,
   target
@@ -48,8 +46,6 @@ const ActivityDashboard: React.FC<IProps> = ({
             key={(selectedActivity && selectedActivity.id) || 0}
             setEditMode={setEditMode}
             activity={selectedActivity!}
-            editActivity={editActivity}
-            submitting={submitting}
           />
         )}
       </Grid.Column>
