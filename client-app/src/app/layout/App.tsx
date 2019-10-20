@@ -53,15 +53,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    agent.Activities.list().then(response => {
-      let activities: IActivity[] = [];
-      response.forEach(activity => {
-        activity.date = activity.date.split('.')[0];
-        activities.push(activity);
-      });
-      setActivities(activities);
-    }).then(() => setLoading(false));
-  }, []);
+    activityStore.loadActivities();
+  }, [activityStore]);
 
   if (loading) return <LoadingComponent content='Loading activities...'/>
 
