@@ -1,7 +1,9 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed , configure} from 'mobx';
 import { createContext, SyntheticEvent } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
+
+configure({enforceActions: 'always'});
 
 class ActivityStore {
   @observable activityRegistry = new Map();
