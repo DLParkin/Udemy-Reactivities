@@ -24,7 +24,7 @@ class ActivityStore {
     this.loadingInitial = true;
     try {
       const activities = await agent.Activities.list();
-      runInAction(() => {
+      runInAction('loading activities', () => {
         activities.forEach(activity => {
           activity.date = activity.date.split('.')[0];
           this.activityRegistry.set(activity.id, activity);
@@ -32,8 +32,8 @@ class ActivityStore {
         this.loadingInitial = false;
       });
     } catch (error) {
-      runInAction(() => {
-        console.error();
+      console.log(error);
+      runInAction('load activities error', () => {
         this.loadingInitial = false;
       });
     }
@@ -43,12 +43,16 @@ class ActivityStore {
     this.submitting = true;
     try {
       await agent.Activities.create(activity);
-      this.activityRegistry.set(activity.id, activity);
-      this.editMode = false;
-      this.submitting = false;
+      runInAction('creating activity', () => {
+        this.activityRegistry.set(activity.id, activity);
+        this.editMode = false;
+        this.submitting = false;
+      });
     } catch (error) {
       console.log(error);
-      this.submitting = false;
+      runInAction('creating activity error', () => {
+        this.submitting = false;
+      });
     }
   };
 
