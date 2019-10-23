@@ -27,12 +27,7 @@ const ActivitiyDetails: React.FC = () => {
                 color="blue"
                 content="Edit"
               />
-              <Button
-                onClick={() => cancelSelectedActivity}
-                basic
-                color="grey"
-                content="Cancel"
-              />
+              <Button onClick={() => cancelSelectedActivity} basic color="grey" content="Cancel" />
             </Button.Group>
           </Card.Content>
         </Card>
