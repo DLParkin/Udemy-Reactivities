@@ -10,7 +10,7 @@ interface DetailsParams {
   id: string;
 }
 
-const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match }) => {
+const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match, history }) => {
   const activityStore = useContext(ActivityStore);
   const {
     createActivity,
@@ -47,9 +47,9 @@ const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match }) =
         ...activity,
         id: uuid()
       };
-      createActivity(newActivity);
+      createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
     } else {
-      editActivity(activity);
+      editActivity(activity).then(() => history.push(`/activities/${activity.id}`));
     }
   };
 
