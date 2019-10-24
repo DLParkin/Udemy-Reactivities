@@ -1,14 +1,23 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import ActivityStore from '../../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
+import { RouteComponentProps } from 'react-router';
 
-const ActivityDetails: React.FC = () => {
+interface DetailParams {
+  id: string;
+}
+
+const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match }) => {
   const activityStore = useContext(ActivityStore);
-  const { activity, openEditForm, cancelSelectedActivity } = activityStore;
+  const { activity, openEditForm, cancelSelectedActivity, loadActivity } = activityStore;
 
-  return <h1>Hey Activity</h1>
-  
+  useEffect(() => {
+    loadActivity(match.params.id);
+  }, [loadActivity]);
+
+  return <h1>Hey Activity</h1>;
+
   return (
     <Fragment>
       {activity && (
