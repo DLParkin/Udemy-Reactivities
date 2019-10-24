@@ -23,7 +23,7 @@ const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match, his
   } = activityStore;
 
   useEffect(() => {
-    if (match.params.id) {
+    if (match.params.id && activity.id.length === 0) {
       loadActivity(match.params.id).then(() => initialFormState && setActivity(initialFormState));
     }
     return () => {
