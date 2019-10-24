@@ -3,6 +3,7 @@ import { Card, Image, Button } from 'semantic-ui-react';
 import ActivityStore from '../../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
 import { RouteComponentProps } from 'react-router';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 
 interface DetailParams {
   id: string;
@@ -10,13 +11,19 @@ interface DetailParams {
 
 const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match }) => {
   const activityStore = useContext(ActivityStore);
-  const { activity, openEditForm, cancelSelectedActivity, loadActivity } = activityStore;
+  const {
+    activity,
+    openEditForm,
+    cancelSelectedActivity,
+    loadActivity,
+    loadingInitial
+  } = activityStore;
 
   useEffect(() => {
     loadActivity(match.params.id);
   }, [loadActivity]);
 
-  return <h1>Hey Activity</h1>;
+  if (loadingInitial) return <LoadingComponent content="loading activity..." />;
 
   return (
     <Fragment>
