@@ -23,7 +23,7 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match })
     loadActivity(match.params.id);
   }, [loadActivity]);
 
-  if (loadingInitial) return <LoadingComponent content="loading activity..." />;
+  if (loadingInitial || !activity ) return <LoadingComponent content="loading activity..." />;
 
   return (
     <Fragment>
