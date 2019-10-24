@@ -21,27 +21,21 @@ const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match }) =
     loadActivity
   } = activityStore;
 
-  useEffect(() =>{
-
-  })
-
-  const initializeForm = () => {
-    if (initialFormState) {
-      return initialFormState;
-    } else {
-      return {
-        id: '',
-        title: '',
-        category: '',
-        description: '',
-        date: '',
-        city: '',
-        venue: ''
-      };
+  useEffect(() => {
+    if (match.params.id) {
+      loadActivity(match.params.id);
     }
-  };
+  });
 
-  const [activity, setActivity] = useState<IActivity>(initializeForm);
+  const [activity, setActivity] = useState<IActivity>({
+    id: '',
+    title: '',
+    category: '',
+    description: '',
+    date: '',
+    city: '',
+    venue: ''
+  });
 
   const handleSubmit = () => {
     if (activity.id.length === 0) {
