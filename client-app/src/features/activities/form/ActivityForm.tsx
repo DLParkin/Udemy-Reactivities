@@ -25,6 +25,9 @@ const ActivityForm: React.FC<RouteComponentProps<DetailsParams>> = ({ match }) =
     if (match.params.id) {
       loadActivity(match.params.id).then(() => initialFormState && setActivity(initialFormState));
     }
+    return () => {
+      
+    }
   });
 
   const [activity, setActivity] = useState<IActivity>({
