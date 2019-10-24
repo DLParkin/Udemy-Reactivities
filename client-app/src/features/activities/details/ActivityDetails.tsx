@@ -3,7 +3,7 @@ import { Card, Image, Button } from 'semantic-ui-react';
 import ActivityStore from '../../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
 
-const ActivitiyDetails: React.FC = () => {
+const ActivityDetails: React.FC = () => {
   const activityStore = useContext(ActivityStore);
   const { selectedActivity: activity, openEditForm, cancelSelectedActivity } = activityStore;
 
@@ -36,4 +36,4 @@ const ActivitiyDetails: React.FC = () => {
   );
 };
 
-export default observer(ActivitiyDetails);
+export default observer(ActivityDetails);
