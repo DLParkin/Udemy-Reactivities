@@ -7,6 +7,8 @@ const ActivityDetails: React.FC = () => {
   const activityStore = useContext(ActivityStore);
   const { activity, openEditForm, cancelSelectedActivity } = activityStore;
 
+  return <h1>Hey Activity</h1>
+  
   return (
     <Fragment>
       {activity && (
