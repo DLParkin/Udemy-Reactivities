@@ -9,7 +9,7 @@ interface DetailParams {
   id: string;
 }
 
-const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match }) => {
+const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match, history }) => {
   const activityStore = useContext(ActivityStore);
   const {
     activity,
@@ -23,7 +23,7 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match })
     loadActivity(match.params.id);
   }, [loadActivity]);
 
-  if (loadingInitial || !activity ) return <LoadingComponent content="loading activity..." />;
+  if (loadingInitial || !activity) return <LoadingComponent content="loading activity..." />;
 
   return (
     <Fragment>
@@ -45,7 +45,12 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({ match })
                 color="blue"
                 content="Edit"
               />
-              <Button onClick={cancelSelectedActivity} basic color="grey" content="Cancel" />
+              <Button
+                onClick={() => history.push('/activities')}
+                basic
+                color="grey"
+                content="Cancel"
+              />
             </Button.Group>
           </Card.Content>
         </Card>
