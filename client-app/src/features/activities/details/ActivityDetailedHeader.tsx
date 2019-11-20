@@ -1,34 +1,42 @@
 import React from "react";
 import { Segment, Image, Item, Button, Header } from "semantic-ui-react";
+import { IActivity } from "../../../app/models/activity";
+import { observer } from "mobx-react-lite";
 
 const activityImageStyle = {
-  filter: 'brightness(30%)'
+  filter: "brightness(30%)"
 };
 
 const activityImageTextStyle = {
-  position: 'absolute',
-  bottom: '5%',
-  left: '5%',
-  width: '100%',
-  height: 'auto',
-  color: 'white'
+  position: "absolute",
+  bottom: "5%",
+  left: "5%",
+  width: "100%",
+  height: "auto",
+  color: "white"
 };
 
-const ActivityDetailedHeader = () => {
+const ActivityDetailedHeader: React.FC<{ activity: IActivity }> = ({
+  activity
+}) => {
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
-        <Image src={`/assets/placeholder.png`} fluid style={activityImageStyle} />
+        <Image
+          src={`/assets/categoryImages/${activity.category}.jpg`}
+          fluid
+          style={activityImageStyle}
+        />
         <Segment basic style={activityImageTextStyle}>
           <Item.Group>
             <Item>
               <Item.Content>
                 <Header
                   size="huge"
-                  content={"Title"}
+                  content={activity.title}
                   style={{ color: "white" }}
                 />
-                <p>Date</p>
+                <p>{activity.date}</p>
                 <p>
                   Hosted by <strong>Bob</strong>
                 </p>
@@ -48,4 +56,4 @@ const ActivityDetailedHeader = () => {
   );
 };
 
-export default ActivityDetailedHeader;
+export default observer(ActivityDetailedHeader);
