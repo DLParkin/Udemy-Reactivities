@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export const ActivityDetailedHeader = () => {
+const ActivityDetailedHeader = () => {
   return (
     <div>
       <h1>Header</h1>
     </div>
-  )
-}
+  );
+};
+
+export default ActivityDetailedHeader;
