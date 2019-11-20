@@ -1,10 +1,9 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { Card, Image, Button, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import ActivityStore from "../../../app/stores/activityStore";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
-import { Link } from "react-router-dom";
 import ActivityDetailedHeader from '../details/ActivityDetailedHeader';
 import ActivityDetailedInfo from '../details/ActivityDetailedInfo';
 import ActivityDetailedChat from '../details/ActivityDetailedChat';
