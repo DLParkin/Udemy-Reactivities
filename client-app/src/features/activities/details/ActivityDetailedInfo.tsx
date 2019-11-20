@@ -1,7 +1,10 @@
 import React from "react";
 import { Segment, Grid, Icon } from "semantic-ui-react";
+import { IActivity } from "../../../app/models/activity";
 
-const ActivityDetailedInfo = () => {
+const ActivityDetailedInfo: React.FC<{ activity: IActivity }> = ({
+  activity
+}) => {
   return (
     <Segment.Group>
       <Segment attached="top">
@@ -10,7 +13,7 @@ const ActivityDetailedInfo = () => {
             <Icon size="large" color="teal" name="info" />
           </Grid.Column>
           <Grid.Column width={15}>
-            <p>{"description"}</p>
+            <p>{activity.description}</p>
           </Grid.Column>
         </Grid>
       </Segment>
@@ -20,7 +23,7 @@ const ActivityDetailedInfo = () => {
             <Icon name="calendar" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={15}>
-            <span>{"date"}</span>
+            <span>{activity.date}</span>
           </Grid.Column>
         </Grid>
       </Segment>
@@ -31,7 +34,7 @@ const ActivityDetailedInfo = () => {
           </Grid.Column>
           <Grid.Column width={11}>
             <span>
-              {"venue"}, {"city"}
+              {activity.venue}, {activity.city}
             </span>
           </Grid.Column>
         </Grid>
