@@ -1,12 +1,25 @@
 import React from "react";
 import { Segment, Image, Item, Button, Header } from "semantic-ui-react";
 
+const activityImageStyle = {
+  filter: 'brightness(30%)'
+};
+
+const activityImageTextStyle = {
+  position: 'absolute',
+  bottom: '5%',
+  left: '5%',
+  width: '100%',
+  height: 'auto',
+  color: 'white'
+};
+
 const ActivityDetailedHeader = () => {
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
-        <Image src={`/assets/placeholder.png`} fluid />
-        <Segment>
+        <Image src={`/assets/placeholder.png`} fluid style={activityImageStyle} />
+        <Segment basic style={activityImageTextStyle}>
           <Item.Group>
             <Item>
               <Item.Content>
