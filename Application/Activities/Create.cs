@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Persistence;
 using Domain;
+using FluentValidation;
 
 namespace Application.Activities
 {
@@ -24,6 +25,11 @@ namespace Application.Activities
             public string City { get; set; }
 
             public string Venue { get; set; }
+        }
+
+        public class CommandValidator : AbstractValidator<Command>
+        {
+
         }
 
         public class Handler : IRequestHandler<Command>
