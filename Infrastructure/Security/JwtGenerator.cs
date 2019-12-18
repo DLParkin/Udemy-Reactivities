@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Application.Interfaces;
 using Domain;
 
@@ -7,7 +10,10 @@ namespace Infrastructure.Security
     {
         public string CreateToken(AppUser user)
         {
-            throw new System.NotImplementedException();
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+            };
         }
     }
 }
