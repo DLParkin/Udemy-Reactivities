@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Application.Interfaces;
+using Application.User;
 using Domain;
 using Microsoft.IdentityModel.Tokens;
 
@@ -35,6 +36,11 @@ namespace Infrastructure.Security
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+        }
+
+        public string CreateToken(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }
