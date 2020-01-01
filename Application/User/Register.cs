@@ -32,7 +32,7 @@ namespace Application.User
                 RuleFor(x => x.DisplayName).NotEmpty();
                 RuleFor(x => x.UserName).NotEmpty();
                 RuleFor(x => x.Email).NotEmpty();
-                RuleFor(x => x.Password).NotEmpty();
+                RuleFor(x => x.Password).NotEmpty().MinimumLength(6).WithMessage("Password must be at least 6 characters").Matches("[A-Z]").WithMessage("Password Must contain 1 uppercase letter");
             }
         }
 
