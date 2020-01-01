@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentValidation;
 using MediatR;
 using Persistence;
 
@@ -15,6 +16,17 @@ namespace Application.User
             public string UserName { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
+        }
+
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.DisplayName).NotEmpty();
+                RuleFor(x => x.UserName).NotEmpty();
+                RuleFor(x => x.Email).NotEmpty();
+                RuleFor(x => x.Password).NotEmpty();
+            }
         }
 
         public class Handler : IRequestHandler<Command>
