@@ -8,9 +8,13 @@ namespace Application.User
 {
     public class Register
     {
-        public class Command : IRequest
+        public class Command : IRequest<User>
         {
-
+            // return the user on request so we can have them login automatically after registering
+            public string DisplayName { get; set; }
+            public string UserName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
