@@ -36,7 +36,7 @@ namespace Application.User
             }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler : IRequestHandler<Command, User>
         {
             private readonly DataContext _context;
             private readonly UserManager<AppUser> _userManager;
@@ -49,7 +49,7 @@ namespace Application.User
                 _jwtGenerator = jwtGenerator;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<User> Handle(Command request, CancellationToken cancellationToken)
             {
                 if (await _context.Users.Where(x => x.Email == request.Email).AnyAsync())
                     throw new RestException(HttpStatusCode.BadRequest, new { Email = "Email already exists" });
@@ -64,10 +64,19 @@ namespace Application.User
                     UserName = request.UserName
                 };
 
-                
-                var success = await _context.SaveChangesAsync() > 0;
 
-                if (success) return Unit.Value;
+                var result = await _userManager.CreateAsync(user, request.Password);
+
+                if (result.Succeeded)
+                {
+                    return new User
+                    {
+                        DisplayName = user.DisplayName,
+                        Token = _jwtGenerator.CreateToken(user),
+                        Username = user.UserName,
+                        Image = null
+                    };
+                }
 
                 throw new Exception("Problem saving changes");
             }
