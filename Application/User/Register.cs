@@ -1,11 +1,15 @@
 using System;
+using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Errors;
 using Application.Interfaces;
 using Domain;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.User
@@ -47,7 +51,11 @@ namespace Application.User
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                // handler logic
+                if (await _context.Users.Where(x => x.Email == request.Email).AnyAsync())
+                    throw new RestException(HttpStatusCode.BadRequest, new { Email = "Email already exists" });
+
+                if (await _context.Users.Where(x => x.UserName == request.UserName).AnyAsync())
+                    throw new RestException(HttpStatusCode.BadRequest, new { UserName = "User already exists" });
 
                 var success = await _context.SaveChangesAsync() > 0;
 
