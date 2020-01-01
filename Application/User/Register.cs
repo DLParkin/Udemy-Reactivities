@@ -1,8 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Interfaces;
+using Domain;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Persistence;
 
 namespace Application.User
@@ -32,9 +35,14 @@ namespace Application.User
         public class Handler : IRequestHandler<Command>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly UserManager<AppUser> _userManager;
+            private readonly IJwtGenerator _jwtGenerator;
+
+            public Handler(DataContext context, UserManager<AppUser> userManager, IJwtGenerator jwtGenerator)
             {
                 _context = context;
+                _userManager = userManager;
+                _jwtGenerator = jwtGenerator;
             }
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
